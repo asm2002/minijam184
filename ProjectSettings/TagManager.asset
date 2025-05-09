@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ball
   - Ground
+  - Background
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - Player
   - Ground
   - Ball
-  - 
+  - Background
   - 
   - 
   - 
