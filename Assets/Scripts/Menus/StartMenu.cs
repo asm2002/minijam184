@@ -106,6 +106,7 @@ public class StartMenu : MonoBehaviour
     [ContextMenu("Quit Game")]
     public void QuitGame()
     {
+        DOTween.KillAll();
         Application.Quit();
     }
 
