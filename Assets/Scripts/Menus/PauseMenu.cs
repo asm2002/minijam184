@@ -14,6 +14,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] float pauseTime = 0.5f;
     [SerializeField] RectTransform pauseComponents;
     [SerializeField] Transition transition;
+    [SerializeField] Timer timer;
 
     Vector3 pausePosition;
     bool canPause = true;
@@ -45,6 +46,7 @@ public class PauseMenu : MonoBehaviour
         DOTween.To(() => Time.timeScale, x => Time.timeScale = x, 0, pauseTime).SetUpdate(true);
         backgroundImage.DOColor(backgroundColor, pauseTime).SetUpdate(true);
         pauseComponents.DOMove(pausePosition, pauseTime).SetUpdate(true);
+        timer.PauseGame(); // Updates Total Time display
     }
 
     [ContextMenu("Close Pause")]
@@ -68,6 +70,11 @@ public class PauseMenu : MonoBehaviour
         pauseComponents.position = pausePosition + new Vector3(0, 1000);
         canPause = true;
         pauseMenu.SetActive(false);
+    }
+
+    public void ToggleCanPause()
+    {
+        canPause = !canPause;
     }
 
 }
