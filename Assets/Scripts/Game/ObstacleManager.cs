@@ -41,7 +41,7 @@ public class ObstacleManager : MonoBehaviour
             obstacles[Random.Range(0, obstacles.Count)],
             new Vector3(
                 spawnPointL.transform.position.x,
-                Random.Range(-spawnRange, spawnRange),
+                Random.Range(spawnPointL.transform.position.y - spawnRange, spawnPointL.transform.position.y + spawnRange),
                 spawnPointL.transform.position.z
                 ),
             spawnPointL.rotation, 
