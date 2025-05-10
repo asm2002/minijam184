@@ -78,6 +78,8 @@ public class StartMenu : MonoBehaviour
     [ContextMenu("Start Game")]
     public void StartGame()
     {
+        logoRotation.Kill();
+        logoScale.Kill();
         transition.TransitionExit("GameScene");
     }
 
