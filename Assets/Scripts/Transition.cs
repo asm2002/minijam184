@@ -21,14 +21,14 @@ public class Transition : MonoBehaviour
     public void TransitionEnter()
     {
         Sequence enterSequence = DOTween.Sequence();
-        enterSequence.Append(transitionTransform.DOLocalMoveX(distance, transitionTime));
+        enterSequence.Append(transitionTransform.DOLocalMoveX(distance, transitionTime).SetEase(Ease.InOutQuad));
         enterSequence.Append(transitionTransform.DOLocalMoveX(-distance, 0));
         enterSequence.Play();
     }
 
     public void TransitionExit(string nextScene)
     {
-        transitionTransform.DOLocalMoveX(0, transitionTime);
+        transitionTransform.DOLocalMoveX(0, transitionTime).SetEase(Ease.InOutQuad);
         StartCoroutine(ExitScene(nextScene));
     }
 
