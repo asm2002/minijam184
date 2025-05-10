@@ -28,6 +28,7 @@ public class Transition : MonoBehaviour
 
     public void TransitionExit(string nextScene)
     {
+        if (Time.timeScale != 1) Time.timeScale = 1;
         transitionTransform.DOLocalMoveX(0, transitionTime).SetEase(Ease.InOutQuad);
         StartCoroutine(ExitScene(nextScene));
     }
@@ -35,6 +36,7 @@ public class Transition : MonoBehaviour
     private IEnumerator ExitScene(string nextScene)
     {
         yield return new WaitForSeconds(transitionTime);
+        DOTween.KillAll();
         SceneManager.LoadScene(nextScene);
     }
 

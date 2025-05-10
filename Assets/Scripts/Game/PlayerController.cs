@@ -45,10 +45,7 @@ public class PlayerController : MonoBehaviour
             LetterInput();
         }
 
-        if(Input.GetKey(KeyCode.Space))
-        {
-            TryHitBall();
-        }
+        
         ResetXVelocityIfNoInput();
         ClampPosition();
     }
@@ -70,6 +67,10 @@ public class PlayerController : MonoBehaviour
         {
             GoRight();
         }
+        if (Input.GetKey(KeyCode.Space))
+        {
+            TryHitBall();
+        }
     }
 
     private void ArrowInput()
@@ -88,6 +89,10 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.RightArrow))
         {
             GoRight();
+        }
+        if (Input.GetKey(KeyCode.RightControl))
+        {
+            TryHitBall();
         }
     }
     private void ResetXVelocityIfNoInput()

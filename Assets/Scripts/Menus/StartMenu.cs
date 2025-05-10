@@ -42,13 +42,13 @@ public class StartMenu : MonoBehaviour
         controlsBlurImage.color = blurTransparent;
 
         logoRotation = DOTween.Sequence();
-        logoRotation.Append(logoTransform.DORotate(new Vector3(0, 0, rotationAmount), logoAnimationTime).SetEase(Ease.InOutQuad));
-        logoRotation.Append(logoTransform.DORotate(new Vector3(0, 0, -rotationAmount), logoAnimationTime).SetEase(Ease.InOutQuad));
+        logoRotation.Append(logoTransform.DORotate(new Vector3(0, 0, rotationAmount), logoAnimationTime).SetEase(Ease.InOutQuad).SetUpdate(true));
+        logoRotation.Append(logoTransform.DORotate(new Vector3(0, 0, -rotationAmount), logoAnimationTime).SetEase(Ease.InOutQuad).SetUpdate(true));
         logoRotation.SetLoops(-1, LoopType.Yoyo);
 
         logoScale = DOTween.Sequence();
-        logoScale.Append(logoTransform.DOScale(new Vector3(scaleAmount, scaleAmount, 1), logoAnimationTime / 2).SetEase(Ease.InOutQuad));
-        logoScale.Append(logoTransform.DOScale(new Vector3(1, 1, 1), logoAnimationTime / 2).SetEase(Ease.InOutQuad));
+        logoScale.Append(logoTransform.DOScale(new Vector3(scaleAmount, scaleAmount, 1), logoAnimationTime / 2).SetEase(Ease.InOutQuad).SetUpdate(true));
+        logoScale.Append(logoTransform.DOScale(new Vector3(1, 1, 1), logoAnimationTime / 2).SetEase(Ease.InOutQuad).SetUpdate(true));
         logoScale.SetLoops(-1, LoopType.Yoyo);
 
         logoRotation.Play();
