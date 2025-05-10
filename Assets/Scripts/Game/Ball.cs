@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
+
+    public GameManager gameManager;
+
     private Rigidbody2D rb;
     private float startStrength = 5f;
 
@@ -44,6 +47,7 @@ public class Ball : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
+            gameManager.EndGame();
             Debug.Log("Game Over");
         }
         else if (collision.gameObject.CompareTag("Player"))
