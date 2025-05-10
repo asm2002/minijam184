@@ -5,6 +5,15 @@ using DG.Tweening;
 
 public class StartMenu : MonoBehaviour
 {
+
+    [Header("Logo")]
+    [SerializeField] RectTransform logoTransform;
+    [SerializeField] float logoAnimationTime = 5;
+    [SerializeField] float rotationAmount = 5;
+    [SerializeField] float scaleAmount = 1.1f;
+    Sequence logoRotation;
+    Sequence logoScale;
+
     [Header("Buttons")]
     [SerializeField] GameObject buttons;
     [SerializeField] float selectTime = 0.25f;
@@ -26,10 +35,25 @@ public class StartMenu : MonoBehaviour
 
     private void Start()
     {
+        
         blurTransparent = blurColor;
         blurTransparent.a = 0;
         controlsPanel.localScale = Vector3.zero;
         controlsBlurImage.color = blurTransparent;
+
+        logoRotation = DOTween.Sequence();
+        logoRotation.Append(logoTransform.DORotate(new Vector3(0, 0, rotationAmount), logoAnimationTime).SetEase(Ease.InOutQuad));
+        logoRotation.Append(logoTransform.DORotate(new Vector3(0, 0, -rotationAmount), logoAnimationTime).SetEase(Ease.InOutQuad));
+        logoRotation.SetLoops(-1, LoopType.Yoyo);
+
+        logoScale = DOTween.Sequence();
+        logoScale.Append(logoTransform.DOScale(new Vector3(scaleAmount, scaleAmount, 1), logoAnimationTime / 2).SetEase(Ease.InOutQuad));
+        logoScale.Append(logoTransform.DOScale(new Vector3(1, 1, 1), logoAnimationTime / 2).SetEase(Ease.InOutQuad));
+        logoScale.SetLoops(-1, LoopType.Yoyo);
+
+        logoRotation.Play();
+        logoScale.Play();
+
     }
 
     private void Update()
