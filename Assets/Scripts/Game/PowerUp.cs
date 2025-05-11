@@ -18,8 +18,24 @@ public class TimePowerup : MonoBehaviour
     {
         if (other.CompareTag("Ball"))
         {
+            Vector3 viewportPos = cam.WorldToViewportPoint(transform.position);
+            bool fullyOnScreen =
+                viewportPos.x >= 0f && viewportPos.x <= 1f &&
+                viewportPos.y >= 0f && viewportPos.y <= 1f;
+
+            if (!fullyOnScreen)
+            {
+                // Do nothing if it's not on screen
+                Debug.Log("Powerup hit offscreen — ignoring.");
+                return;
+            }
             Timer.Instance.AddTime(timeToAdd);
+
+            sr.DOKill();
+
             Destroy(gameObject);
+
+            Debug.Log("Ball hit on powerup");
         }
     }
     void Update()
@@ -28,13 +44,13 @@ public class TimePowerup : MonoBehaviour
 
         Vector3 viewportPos = cam.WorldToViewportPoint(transform.position);
         bool fullyOnScreen =
-            viewportPos.x >= 0f && viewportPos.x <= 1f &&
-            viewportPos.y >= 0f && viewportPos.y <= 1f;
+            viewportPos.x >= -0.8f && viewportPos.x <= 1.8f &&
+            viewportPos.y >= -0.8f && viewportPos.y <= 1.8f;
 
         if (fullyOnScreen)
         {
             isFading = true;
-            sr.DOFade(0f, visibleLifespan);
+            sr.DOColor(new Color(sr.color.r, sr.color.g, sr.color.b, 0f), visibleLifespan);
             Destroy(gameObject, visibleLifespan);
             Debug.Log("Powerup fully on screen, starting fade.");
         }

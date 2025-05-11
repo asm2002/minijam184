@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-
     private Rigidbody2D rb;
     private float startStrength = 3f;
 
@@ -19,6 +18,8 @@ public class Ball : MonoBehaviour
     public float highest;
     public float score;
 
+    public bool gameOver = false;
+
 
 
 
@@ -29,9 +30,6 @@ public class Ball : MonoBehaviour
         highest = ballHeight;
         rallyLength = 0;
         rb = GetComponent<Rigidbody2D>();
-        cam = Camera.main;
-
-        ballHalfWidth = GetComponent<CircleCollider2D>().radius * transform.localScale.x;
 
         rb.AddForce(Random.value < 0.5f ? Vector2.right * startStrength : Vector2.left * startStrength);
     }
@@ -40,20 +38,26 @@ public class Ball : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 ballPosition = transform.position;
-        Vector3 screenLeft = cam.ViewportToWorldPoint(Vector3.zero);
-        Vector3 screenRight = cam.ViewportToWorldPoint(Vector3.right);
-
-        if (ballPosition.x - ballHalfWidth < screenLeft.x + screenPadding ||
-            ballPosition.x + ballHalfWidth > screenRight.x - screenPadding)
-        {
-            rb.velocity = new Vector2(-rb.velocity.x, rb.velocity.y);
-        }
         ballHeight = transform.position.y;
         if(ballHeight > highest)
         {
             highest = ballHeight;
         }
+        if(ballHeight <= -3.2 && gameOver == false)
+        {
+            gameOver = true;
+            GameOver();
+        }
+    }
+
+    private void GameOver()
+    {
+        GameManager.Instance.EndGame();
+        Debug.Log("Game Over");
+        Debug.Log("rally:" + rallyLength);
+        Debug.Log("highest score" + highest);
+        score = (rallyLength * 100) + (highest * 10);
+        Debug.Log("score:" + score);
     }
 
 
@@ -61,16 +65,12 @@ public class Ball : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            GameManager.Instance.EndGame();
-            Debug.Log("Game Over");
-            Debug.Log("rally:" + rallyLength);
-            Debug.Log("highest score" + highest);
-            score = (rallyLength * 100) + (highest * 10);
-            Debug.Log("score:" + score);
+            gameOver = true;
+            GameOver();
         }
         else if (collision.gameObject.CompareTag("Player"))
         {
-            if(lastHitPlayer == 2)
+            if(lastHitPlayer == 2 || rallyLength == 0)
             {
                 rallyLength++;
             }
@@ -79,7 +79,7 @@ public class Ball : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Player2"))
         {
-            if (lastHitPlayer == 1)
+            if (lastHitPlayer == 1 || rallyLength == 0)
             {
                 rallyLength++;
             }

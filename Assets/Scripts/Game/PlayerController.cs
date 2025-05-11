@@ -52,10 +52,7 @@ public class PlayerController : MonoBehaviour
         {
             LetterInput();
         }
-
-        
         ResetXVelocityIfNoInput();
-        ClampPosition();
     }
 
     private void LetterInput()
@@ -75,10 +72,7 @@ public class PlayerController : MonoBehaviour
         {
             GoRight();
         }
-        if (Input.GetKey(KeyCode.Space))
-        {
-            TryHitBall();
-        }
+       
     }
 
     private void ArrowInput()
@@ -97,10 +91,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.RightArrow))
         {
             GoRight();
-        }
-        if (Input.GetKey(KeyCode.RightControl))
-        {
-            TryHitBall();
         }
     }
     private void ResetXVelocityIfNoInput()
@@ -165,34 +155,4 @@ public class PlayerController : MonoBehaviour
         vel.x = moveSpeed;
         rb.velocity = vel;
     }
-
-
-    private void ClampPosition()
-    {
-        Vector3 pos = transform.position;
-
-        float minY = cam.transform.position.y - halfHeight;
-        float maxY = cam.transform.position.y + halfHeight;
-
-        float screenMidX = cam.transform.position.x;
-        float screenLeft = screenMidX - halfWidth;
-        float screenRight = screenMidX + halfWidth;
-
-        if (playerControls == Controls.Letters)
-        {
-            // Left player
-            pos.x = Mathf.Clamp(pos.x, screenLeft, screenMidX);
-        }
-        else if (playerControls == Controls.Arrows)
-        {
-            // Right player
-            pos.x = Mathf.Clamp(pos.x, screenMidX, screenRight);
-        }
-
-        pos.y = Mathf.Max(pos.y, minY);
-
-        transform.position = pos;
-    }
-
-
 }
