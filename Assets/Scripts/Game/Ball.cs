@@ -9,8 +9,6 @@ public class Ball : MonoBehaviour
 
     [SerializeField] AudioManager audioManager;
 
-    private Camera cam;
-    private float ballHalfWidth;
     public int rallyLength;
     public int lastHitPlayer;
     public float ballHeight;
@@ -51,12 +49,12 @@ public class Ball : MonoBehaviour
 
     private void GameOver()
     {
-        GameManager.Instance.EndGame();
         Debug.Log("Game Over");
         Debug.Log("rally:" + rallyLength);
         Debug.Log("highest score" + highest);
         score = (rallyLength * 100) + (highest * 10);
         Debug.Log("score:" + score);
+        GameManager.Instance.EndGame();
     }
 
 
@@ -75,6 +73,7 @@ public class Ball : MonoBehaviour
             }
 
             lastHitPlayer = 1;
+            audioManager.PlaySeagullKick();
         }
         else if (collision.gameObject.CompareTag("Player2"))
         {
@@ -84,6 +83,7 @@ public class Ball : MonoBehaviour
             }
 
             lastHitPlayer = 2;
+            audioManager.PlayPelicanKick();
         }
 
         audioManager.PlayBall();
