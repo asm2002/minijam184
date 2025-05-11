@@ -726,9 +726,9 @@ RectTransform:
   - {fileID: 377403073}
   m_Father: {fileID: 501488514}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 145.75, y: -55.75}
   m_SizeDelta: {x: 291.5, y: 88.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &291047273
@@ -2226,9 +2226,9 @@ RectTransform:
   - {fileID: 1498070883}
   m_Father: {fileID: 501488514}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 145.75, y: -144.25}
   m_SizeDelta: {x: 291.5, y: 88.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &776120407
@@ -2428,7 +2428,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 133, y: 6.600006}
+  m_AnchoredPosition: {x: 133, y: 6.5999756}
   m_SizeDelta: {x: 151.846, y: 37.962}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &780475472
@@ -4667,6 +4667,7 @@ MonoBehaviour:
   fadeImage: {fileID: 0}
   endScreenComponents: {fileID: 433179567}
   endTime: 1.5
+  music: {fileID: 0}
   transition: {fileID: 1046948562}
 --- !u!1 &1682180734
 GameObject:
@@ -5013,12 +5014,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioManager: {fileID: 1627610977}
-  screenPadding: 0.5
   rallyLength: 0
   lastHitPlayer: 0
   ballHeight: 0
   highest: 0
   score: 0
+  gameOver: 0
 --- !u!58 &1748424003
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -5592,7 +5593,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!222 &2105494525
 CanvasRenderer:
   m_ObjectHideFlags: 0

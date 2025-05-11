@@ -9,7 +9,6 @@ public class Ball : MonoBehaviour
 
     [SerializeField] AudioManager audioManager;
 
-    [SerializeField] private float screenPadding = 0.5f;
     private Camera cam;
     private float ballHalfWidth;
     public int rallyLength;
