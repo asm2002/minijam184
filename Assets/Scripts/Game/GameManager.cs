@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using DG.Tweening;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AudioSource music;
 
     [SerializeField] Transition transition;
+
+    [SerializeField] private TMP_Text scoreText;
+    [SerializeField] private Ball ball;
 
     Color fadeColor;
     Color fadeTransparent;
@@ -46,6 +50,9 @@ public class GameManager : MonoBehaviour
     {
         pauseMenu.ToggleCanPause();
         timeManager.EndTimer();
+        int finalscore = Mathf.RoundToInt(ball.score);
+        Debug.Log("Finalscore;" + finalscore);
+        scoreText.text = finalscore.ToString();
 
         endScreen.SetActive(true);
         fadeImage.DOColor(fadeColor, endTime).SetEase(Ease.Linear).SetUpdate(true);

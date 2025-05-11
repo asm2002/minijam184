@@ -90,7 +90,7 @@ public class Timer : MonoBehaviour
     public void EndTimer()
     {
         Time.timeScale = 0;
-        DisplayTime(timeElapsed, endTimeDisplay);
+        //DisplayTime(timeElapsed, endTimeDisplay);
 
         Debug.Log("Time has run out");
     }
