@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using TMPro;
 
 public class StartMenu : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class StartMenu : MonoBehaviour
     [SerializeField] float scaleAmount = 1.1f;
     Sequence logoRotation;
     Sequence logoScale;
+    
 
     [Header("Buttons")]
     [SerializeField] GameObject buttons;
@@ -24,9 +26,11 @@ public class StartMenu : MonoBehaviour
     [SerializeField] GameObject controlsMenu;
     [SerializeField] Image controlsBlurImage;
     [SerializeField] RectTransform controlsPanel;
+    [SerializeField] TMP_Text prompt;
     [SerializeField] float controlsTime = 0.5f;
     [SerializeField] Color blurColor;
     Color blurTransparent;
+    Sequence promptColorSequence;
 
     [Space]
     [SerializeField] Transition transition;
@@ -49,6 +53,14 @@ public class StartMenu : MonoBehaviour
         logoScale = DOTween.Sequence();
         logoScale.Append(logoTransform.DOScale(new Vector3(scaleAmount, scaleAmount, 1), logoAnimationTime / 2).SetEase(Ease.InOutQuad).SetUpdate(true));
         logoScale.Append(logoTransform.DOScale(new Vector3(1, 1, 1), logoAnimationTime / 2).SetEase(Ease.InOutQuad).SetUpdate(true));
+        logoScale.SetLoops(-1, LoopType.Yoyo);
+
+        promptColorSequence = DOTween.Sequence();
+        Color promptColor = prompt.color;
+        Color promptTransparent = prompt.color;
+        promptTransparent.a = 0.85f;
+        promptColorSequence.Append(prompt.DOColor(promptTransparent, 1).SetEase(Ease.InOutQuad).SetUpdate(true));
+        promptColorSequence.Append(prompt.DOColor(promptColor, 1).SetEase(Ease.InOutQuad).SetUpdate(true));
         logoScale.SetLoops(-1, LoopType.Yoyo);
 
         logoRotation.Play();
@@ -90,8 +102,10 @@ public class StartMenu : MonoBehaviour
         controlsMenu.SetActive(true);
         controlsPanel.localScale = Vector3.zero;
         controlsPanel.DOScale(Vector3.one, controlsTime);
-        controlsPanel.DOMoveY(0, 0);
+        controlsPanel.DOMoveY(2000, 0);
+        controlsPanel.DOMoveY(700, controlsTime).SetEase(Ease.InOutQuad);
         controlsBlurImage.DOColor(blurColor, controlsTime);
+        promptColorSequence.Play();
     }
 
     [ContextMenu("Close Controls")]
@@ -101,6 +115,7 @@ public class StartMenu : MonoBehaviour
         controlsMenu.SetActive(true);
         controlsPanel.DOScale(Vector3.zero, controlsTime);
         controlsBlurImage.DOColor(blurTransparent, controlsTime);
+        controlsPanel.DOMoveY(2000, controlsTime).SetEase(Ease.InOutQuad);
         StartCoroutine(CloseControlsMenu());
     }
 
@@ -114,6 +129,7 @@ public class StartMenu : MonoBehaviour
     private IEnumerator CloseControlsMenu()
     {
         yield return new WaitForSeconds(controlsTime);
+        promptColorSequence.Kill();
         controlsMenu.SetActive(false);
     }
 

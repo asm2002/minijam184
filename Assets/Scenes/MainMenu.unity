@@ -2034,6 +2034,7 @@ MonoBehaviour:
   controlsMenu: {fileID: 1805217911}
   controlsBlurImage: {fileID: 33346569}
   controlsPanel: {fileID: 1662361745}
+  prompt: {fileID: 1541308246}
   controlsTime: 0.5
   blurColor: {r: 0, g: 0, b: 0, a: 0.78431374}
   transition: {fileID: 210852667}
@@ -2429,6 +2430,7 @@ GameObject:
   - component: {fileID: 1541308245}
   - component: {fileID: 1541308247}
   - component: {fileID: 1541308246}
+  - component: {fileID: 1541308248}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -2452,7 +2454,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 170, y: -202}
+  m_AnchoredPosition: {x: 0, y: -193}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1541308246
@@ -2509,8 +2511,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -2552,6 +2554,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1541308244}
   m_CullTransparentMesh: 1
+--- !u!114 &1541308248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1541308244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0d55f677d2efe74a8996e773d2defba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationTime: 5
+  rotationAmount: 5
+  scaleAmount: 1.1
 --- !u!1 &1656496578
 GameObject:
   m_ObjectHideFlags: 0
@@ -3021,6 +3038,7 @@ GameObject:
   - component: {fileID: 1746988428}
   - component: {fileID: 1746988430}
   - component: {fileID: 1746988429}
+  - component: {fileID: 1746988431}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -3144,6 +3162,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1746988427}
   m_CullTransparentMesh: 1
+--- !u!114 &1746988431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1746988427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0d55f677d2efe74a8996e773d2defba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationTime: 5
+  rotationAmount: 5
+  scaleAmount: 1.1
 --- !u!1 &1805217911
 GameObject:
   m_ObjectHideFlags: 0
