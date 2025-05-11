@@ -58,7 +58,7 @@ public class StartMenu : MonoBehaviour
         promptColorSequence = DOTween.Sequence();
         Color promptColor = prompt.color;
         Color promptTransparent = prompt.color;
-        promptTransparent.a = 0.85f;
+        promptTransparent.a = 0.25f;
         promptColorSequence.Append(prompt.DOColor(promptTransparent, 1).SetEase(Ease.InOutQuad).SetUpdate(true));
         promptColorSequence.Append(prompt.DOColor(promptColor, 1).SetEase(Ease.InOutQuad).SetUpdate(true));
         logoScale.SetLoops(-1, LoopType.Yoyo);

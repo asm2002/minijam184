@@ -8,6 +8,8 @@ public class Ball : MonoBehaviour
     private Rigidbody2D rb;
     private float startStrength = 3f;
 
+    [SerializeField] AudioManager audioManager;
+
     [SerializeField] private float screenPadding = 0.5f;
     private Camera cam;
     private float ballHalfWidth;
@@ -84,6 +86,9 @@ public class Ball : MonoBehaviour
 
             lastHitPlayer = 2;
         }
+
+        audioManager.PlayBall();
+
     }
 
 
