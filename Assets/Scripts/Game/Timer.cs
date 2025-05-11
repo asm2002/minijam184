@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class Timer : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class Timer : MonoBehaviour
     public TMP_Text timeRemainingDisplay;
     public TMP_Text pauseTimeDisplay;
     public TMP_Text endTimeDisplay;
-
+    public TMP_Text bonusTimeDisplay;
 
     private float timeRemaining;
     private float timeElapsed;
@@ -68,6 +69,16 @@ public class Timer : MonoBehaviour
     public void AddTime(float timeToAdd)
     {
         timeRemaining += timeToAdd;
+        ShowBonusTime(timeToAdd);
+    }
+    void ShowBonusTime(float amount)
+    {
+        bonusTimeDisplay.text = $"+{amount}!";
+        bonusTimeDisplay.alpha = 1f;
+        bonusTimeDisplay.gameObject.SetActive(true);
+
+        bonusTimeDisplay.DOFade(0f, 1f).From(1f).OnComplete(() => bonusTimeDisplay.text = "");
+
     }
     public void EndTimer()
     {
