@@ -17,6 +17,16 @@ public class Ball : MonoBehaviour
 
     public bool gameOver = false;
 
+    [SerializeField] private GameObject sandEffectPrefab;
+    private ParticleSystem sandEffect;
+
+
+    private void Start()
+    {
+        GameObject effectObj = Instantiate(sandEffectPrefab);
+        sandEffect = effectObj.GetComponent<ParticleSystem>();
+        sandEffect.Stop();
+    }
 
     // Update is called once per frame
     void Update()
@@ -66,6 +76,14 @@ public class Ball : MonoBehaviour
             }
             else if (collision.gameObject.CompareTag("Player"))
             {
+                // Sand particle spawning
+                ContactPoint2D contact = collision.GetContact(0);
+                Vector2 hitNormal = contact.normal;
+
+                sandEffect.transform.position = contact.point;
+                sandEffect.transform.rotation = Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector2.up, hitNormal));
+                sandEffect.Play();
+
                 if (lastHitPlayer == 2 || rallyLength == 0)
                 {
                     rallyLength++;
@@ -75,6 +93,13 @@ public class Ball : MonoBehaviour
             }
             else if (collision.gameObject.CompareTag("Player2"))
             {
+                ContactPoint2D contact = collision.GetContact(0);
+                Vector2 hitNormal = contact.normal;
+
+                sandEffect.transform.position = contact.point;
+                sandEffect.transform.rotation = Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector2.up, hitNormal));
+                sandEffect.Play();
+
                 if (lastHitPlayer == 1 || rallyLength == 0)
                 {
                     rallyLength++;

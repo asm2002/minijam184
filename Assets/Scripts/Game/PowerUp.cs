@@ -44,8 +44,8 @@ public class TimePowerup : MonoBehaviour
 
         Vector3 viewportPos = cam.WorldToViewportPoint(transform.position);
         bool fullyOnScreen =
-            viewportPos.x >= -0.8f && viewportPos.x <= 1.8f &&
-            viewportPos.y >= -0.8f && viewportPos.y <= 1.8f;
+            viewportPos.x >= -0.1f && viewportPos.x <= 1.1f &&
+            viewportPos.y >= -0.1f && viewportPos.y <= 1.1f;
 
         if (fullyOnScreen)
         {
