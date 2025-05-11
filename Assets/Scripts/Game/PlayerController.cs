@@ -6,13 +6,30 @@ public enum Controls {Letters, Arrows}
 
 public class PlayerController : MonoBehaviour
 {
+    private enum bird
+    {
+        seagull, pelican
+    };
+
     private Rigidbody2D rb;
     private float lastFlapTime = 0f;
 
     [SerializeField] private Controls playerControls;
+    [SerializeField] private bird type;
     [SerializeField] private float flapPower = 500f;
     [SerializeField] private float flapDelay = 0.2f;
     [SerializeField] private float moveSpeed = 5f;
+
+
+    [SerializeField] private Ball ball;
+    [SerializeField] private float hitRange = 1.5f;
+
+    [SerializeField] AudioManager audioManager;
+
+    private Camera cam;
+    private float halfWidth;
+    private float halfHeight;
+
 
     // Start is called before the first frame update
     void Start()
@@ -101,6 +118,26 @@ public class PlayerController : MonoBehaviour
 
         lastFlapTime = Time.time;
     }
+
+
+    private void TryHitBall()
+    {
+        if (ball == null) return;
+
+        float distance = Vector2.Distance(transform.position, ball.transform.position);
+        if (distance <= hitRange)
+        {
+            Rigidbody2D ballrb = ball.GetComponent<Rigidbody2D>();
+            ballrb.velocity = new Vector2(-ballrb.velocity.x + rb.velocity.x, ballrb.velocity.y + rb.velocity.y);
+
+            if (type == bird.seagull) audioManager.PlaySeagullKick();
+            else audioManager.PlayPelicanKick();
+
+            Debug.Log("HIT");
+        }
+    }
+
+
 
     private void GoLeft()
     {

@@ -6,6 +6,11 @@ public class Ball : MonoBehaviour
 {
     private Rigidbody2D rb;
     private float startStrength = 3f;
+
+    [SerializeField] AudioManager audioManager;
+
+    private Camera cam;
+    private float ballHalfWidth;
     public int rallyLength;
     public int lastHitPlayer;
     public float ballHeight;
@@ -80,6 +85,9 @@ public class Ball : MonoBehaviour
 
             lastHitPlayer = 2;
         }
+
+        audioManager.PlayBall();
+
     }
 
 
