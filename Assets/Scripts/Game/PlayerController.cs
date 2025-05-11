@@ -14,22 +14,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float flapDelay = 0.2f;
     [SerializeField] private float moveSpeed = 5f;
 
-
-    [SerializeField] private Ball ball;
-    [SerializeField] private float hitRange = 1.5f;
-
-    private Camera cam;
-    private float halfWidth;
-    private float halfHeight;
-
-
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        cam = Camera.main;
-        halfHeight = cam.orthographicSize;
-        halfWidth = halfHeight * cam.aspect;
 
     }
 
