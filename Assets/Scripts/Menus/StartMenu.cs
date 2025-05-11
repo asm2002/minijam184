@@ -90,6 +90,7 @@ public class StartMenu : MonoBehaviour
         controlsMenu.SetActive(true);
         controlsPanel.localScale = Vector3.zero;
         controlsPanel.DOScale(Vector3.one, controlsTime);
+        controlsPanel.DOMoveY(0, 0);
         controlsBlurImage.DOColor(blurColor, controlsTime);
     }
 

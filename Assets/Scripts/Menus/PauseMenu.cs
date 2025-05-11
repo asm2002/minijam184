@@ -16,6 +16,9 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] Transition transition;
     [SerializeField] Timer timer;
 
+    [SerializeField] AudioSource music;
+    [SerializeField] AudioLowPassFilter lowPassFilter;
+
     Vector3 pausePosition;
     bool canPause = true;
 
@@ -46,6 +49,8 @@ public class PauseMenu : MonoBehaviour
         DOTween.To(() => Time.timeScale, x => Time.timeScale = x, 0, pauseTime).SetUpdate(true);
         backgroundImage.DOColor(backgroundColor, pauseTime).SetUpdate(true);
         pauseComponents.DOMove(pausePosition, pauseTime).SetUpdate(true);
+        music.DOFade(0.4f, pauseTime).SetUpdate(true);
+        DOTween.To(() => lowPassFilter.cutoffFrequency, x => lowPassFilter.cutoffFrequency = x, 3000, pauseTime).SetUpdate(true);
         timer.PauseGame(); // Updates Total Time display
     }
 
@@ -56,6 +61,8 @@ public class PauseMenu : MonoBehaviour
         DOTween.To(() => Time.timeScale, x => Time.timeScale = x, 1, pauseTime).SetUpdate(true);
         backgroundImage.DOColor(backgroundTransparent, pauseTime).SetUpdate(true);
         pauseComponents.DOMove(pausePosition - new Vector3(0, 1000), pauseTime).SetUpdate(true);
+        music.DOFade(0.7f, pauseTime).SetUpdate(true);
+        DOTween.To(() => lowPassFilter.cutoffFrequency, x => lowPassFilter.cutoffFrequency = x, 22000, pauseTime).SetUpdate(true);
         StartCoroutine(closePauseMenu());
     }
 
