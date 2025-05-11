@@ -6,17 +6,29 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
+    public static Timer Instance { get; private set; }
+
     public float defaultTime;
 
     public TMP_Text timeRemainingDisplay;
     public TMP_Text pauseTimeDisplay;
     public TMP_Text endTimeDisplay;
-    
-    public GameManager gameManager;
+
 
     private float timeRemaining;
     private float timeElapsed;
 
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void Start()
     {
@@ -36,7 +48,7 @@ public class Timer : MonoBehaviour
         }
         else {
             // End game via gameManager
-            gameManager.EndGame();
+            GameManager.Instance.EndGame();
         }
     }
 
@@ -51,6 +63,11 @@ public class Timer : MonoBehaviour
     public void PauseGame()
     {
         DisplayTime(timeElapsed, pauseTimeDisplay);
+    }
+
+    public void AddTime(float timeToAdd)
+    {
+        timeRemaining += timeToAdd;
     }
     public void EndTimer()
     {

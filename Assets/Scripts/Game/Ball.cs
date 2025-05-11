@@ -5,10 +5,8 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
 
-    public GameManager gameManager;
-
     private Rigidbody2D rb;
-    private float startStrength = 5f;
+    private float startStrength = 3f;
 
     [SerializeField] private float screenPadding = 0.5f;
     private Camera cam;
@@ -47,7 +45,7 @@ public class Ball : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            gameManager.EndGame();
+            GameManager.Instance.EndGame();
             Debug.Log("Game Over");
         }
         else if (collision.gameObject.CompareTag("Player"))
