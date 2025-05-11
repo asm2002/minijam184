@@ -726,9 +726,9 @@ RectTransform:
   - {fileID: 377403073}
   m_Father: {fileID: 501488514}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 145.75, y: -55.75}
   m_SizeDelta: {x: 291.5, y: 88.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &291047273
@@ -2226,9 +2226,9 @@ RectTransform:
   - {fileID: 1498070883}
   m_Father: {fileID: 501488514}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 145.75, y: -144.25}
   m_SizeDelta: {x: 291.5, y: 88.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &776120407
@@ -3558,7 +3558,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -71.7, y: 28.899963}
+  m_AnchoredPosition: {x: -71.7, y: 28.899902}
   m_SizeDelta: {x: 1188, y: 1476}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1148015825
@@ -4874,7 +4874,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacles:
-  - {fileID: 1461113229191343839, guid: f6da34433b425594aaa7f1cae6120ad6, type: 3}
+  - {fileID: 1461113229191343839, guid: 5f3141b2d821d634ebe4176a1d5fb868, type: 3}
   spawnPointL: {fileID: 1682180735}
   spawnPointR: {fileID: 1890869766}
   spawnRange: 6
@@ -5164,6 +5164,7 @@ MonoBehaviour:
   highest: 0
   score: 0
   gameOver: 0
+  sandEffectPrefab: {fileID: 1686659481477977162, guid: 564bc3d27d836de43b552bc3857e0752, type: 3}
 --- !u!58 &1748424003
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -5737,7 +5738,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!222 &2105494525
 CanvasRenderer:
   m_ObjectHideFlags: 0
