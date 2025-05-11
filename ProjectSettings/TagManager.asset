@@ -8,6 +8,7 @@ TagManager:
   - Ground
   - Background
   - Powerup
+  - Player2
   layers:
   - Default
   - TransparentFX

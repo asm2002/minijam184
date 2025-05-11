@@ -11,12 +11,21 @@ public class Ball : MonoBehaviour
     [SerializeField] private float screenPadding = 0.5f;
     private Camera cam;
     private float ballHalfWidth;
+    public int rallyLength;
+    public int lastHitPlayer;
+    public float ballHeight;
+    public float highest;
+    public float score;
+
 
 
 
     // Start is called before the first frame update
     void Start()
     {
+        ballHeight = transform.position.y;
+        highest = ballHeight;
+        rallyLength = 0;
         rb = GetComponent<Rigidbody2D>();
         cam = Camera.main;
 
@@ -38,6 +47,11 @@ public class Ball : MonoBehaviour
         {
             rb.velocity = new Vector2(-rb.velocity.x, rb.velocity.y);
         }
+        ballHeight = transform.position.y;
+        if(ballHeight > highest)
+        {
+            highest = ballHeight;
+        }
     }
 
 
@@ -47,10 +61,28 @@ public class Ball : MonoBehaviour
         {
             GameManager.Instance.EndGame();
             Debug.Log("Game Over");
+            Debug.Log("rally:" + rallyLength);
+            Debug.Log("highest score" + highest);
+            score = (rallyLength * 100) + (highest * 10);
+            Debug.Log("score:" + score);
         }
         else if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Ignoring collision with player");
+            if(lastHitPlayer == 2)
+            {
+                rallyLength++;
+            }
+
+            lastHitPlayer = 1;
+        }
+        else if (collision.gameObject.CompareTag("Player2"))
+        {
+            if (lastHitPlayer == 1)
+            {
+                rallyLength++;
+            }
+
+            lastHitPlayer = 2;
         }
     }
 
