@@ -20,20 +20,6 @@ public class Ball : MonoBehaviour
     public bool gameOver = false;
 
 
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        ballHeight = transform.position.y;
-        highest = ballHeight;
-        rallyLength = 0;
-        rb = GetComponent<Rigidbody2D>();
-
-        rb.AddForce(Random.value < 0.5f ? Vector2.right * startStrength : Vector2.left * startStrength);
-    }
-
-
     // Update is called once per frame
     void Update()
     {
@@ -59,35 +45,48 @@ public class Ball : MonoBehaviour
         Debug.Log("score:" + score);
     }
 
+    public void startGame()
+    {
+        GetComponent<Rigidbody2D>().simulated = true;
+
+        ballHeight = transform.position.y;
+        highest = ballHeight;
+        rallyLength = 0;
+        rb = GetComponent<Rigidbody2D>();
+
+        rb.AddForce(Random.value < 0.5f ? Vector2.right * startStrength : Vector2.left * startStrength);
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (gameOver == false)
         {
-            gameOver = true;
-            GameOver();
-        }
-        else if (collision.gameObject.CompareTag("Player"))
-        {
-            if(lastHitPlayer == 2 || rallyLength == 0)
+            if (collision.gameObject.CompareTag("Ground"))
             {
-                rallyLength++;
+                gameOver = true;
+                GameOver();
+            }
+            else if (collision.gameObject.CompareTag("Player"))
+            {
+                if (lastHitPlayer == 2 || rallyLength == 0)
+                {
+                    rallyLength++;
+                }
+
+                lastHitPlayer = 1;
+            }
+            else if (collision.gameObject.CompareTag("Player2"))
+            {
+                if (lastHitPlayer == 1 || rallyLength == 0)
+                {
+                    rallyLength++;
+                }
+
+                lastHitPlayer = 2;
             }
 
-            lastHitPlayer = 1;
+            audioManager.PlayBall();
         }
-        else if (collision.gameObject.CompareTag("Player2"))
-        {
-            if (lastHitPlayer == 1 || rallyLength == 0)
-            {
-                rallyLength++;
-            }
-
-            lastHitPlayer = 2;
-        }
-
-        audioManager.PlayBall();
-
     }
 
 

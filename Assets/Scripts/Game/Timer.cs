@@ -19,6 +19,8 @@ public class Timer : MonoBehaviour
     private float timeRemaining;
     private float timeElapsed;
 
+    private bool gamestarted;
+
     private void Awake()
     {
         if (Instance == null)
@@ -33,18 +35,23 @@ public class Timer : MonoBehaviour
 
     private void Start()
     {
-        // Starts timer
+        Time.timeScale = 1;
         timeRemaining = defaultTime;
         timeElapsed = 1;
-        Time.timeScale = 1;
+        gamestarted = false;
+    }
+
+    public void StartTimer()
+    {
+        gamestarted = true;
     }
 
     void Update()
     {
         if (timeRemaining > 0)
         {
-            timeRemaining -= Time.deltaTime;
-            timeElapsed += Time.deltaTime;
+            if (gamestarted) timeRemaining -= Time.deltaTime;
+            if (gamestarted) timeElapsed += Time.deltaTime;
             DisplayTime(timeRemaining, timeRemainingDisplay);
         }
         else {
