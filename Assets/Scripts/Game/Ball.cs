@@ -91,6 +91,7 @@ public class Ball : MonoBehaviour
 
                 lastHitPlayer = 1;
                 audioManager.PlaySeagullKick();
+                audioManager.PlayBall();
             }
             else if (collision.gameObject.CompareTag("Player2"))
             {
@@ -108,7 +109,11 @@ public class Ball : MonoBehaviour
 
                 lastHitPlayer = 2;
                 audioManager.PlayPelicanKick();
+                audioManager.PlayBall();
             }
+
+
+
         }
 
         
