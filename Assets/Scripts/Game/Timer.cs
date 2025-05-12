@@ -20,7 +20,7 @@ public class Timer : MonoBehaviour
     private float timeElapsed;
 
     private bool gamestarted;
-
+    bool gameOver = false;
     private void Awake()
     {
         if (Instance == null)
@@ -48,15 +48,20 @@ public class Timer : MonoBehaviour
 
     void Update()
     {
-        if (timeRemaining > 0)
+        if (!gameOver)
         {
-            if (gamestarted) timeRemaining -= Time.deltaTime;
-            if (gamestarted) timeElapsed += Time.deltaTime;
-            DisplayTime(timeRemaining, timeRemainingDisplay);
-        }
-        else {
-            // End game via gameManager
-            GameManager.Instance.EndGame();
+            if (timeRemaining > 0)
+            {
+                if (gamestarted) timeRemaining -= Time.deltaTime;
+                if (gamestarted) timeElapsed += Time.deltaTime;
+                DisplayTime(timeRemaining, timeRemainingDisplay);
+            }
+            else
+            {
+                // End game via gameManager
+                gameOver = true;
+                GameManager.Instance.EndGame();
+            }
         }
     }
 
@@ -90,7 +95,9 @@ public class Timer : MonoBehaviour
     public void EndTimer()
     {
         Time.timeScale = 0;
-        //DisplayTime(timeElapsed, endTimeDisplay);
+        timeRemaining = 0;
+        DisplayTime(0, timeRemainingDisplay);
+        DisplayTime(timeElapsed, endTimeDisplay);
 
         Debug.Log("Time has run out");
     }
