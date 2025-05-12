@@ -111,7 +111,7 @@ public class Ball : MonoBehaviour
             }
         }
 
-        audioManager.PlayBall();
+        
 
     }
 
