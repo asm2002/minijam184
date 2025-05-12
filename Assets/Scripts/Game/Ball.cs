@@ -90,6 +90,7 @@ public class Ball : MonoBehaviour
                 }
 
                 lastHitPlayer = 1;
+                audioManager.PlaySeagullKick();
             }
             else if (collision.gameObject.CompareTag("Player2"))
             {
@@ -106,20 +107,8 @@ public class Ball : MonoBehaviour
                 }
 
                 lastHitPlayer = 2;
+                audioManager.PlayPelicanKick();
             }
-
-            lastHitPlayer = 1;
-            audioManager.PlaySeagullKick();
-        }
-        else if (collision.gameObject.CompareTag("Player2"))
-        {
-            if (lastHitPlayer == 1 || rallyLength == 0)
-            {
-                rallyLength++;
-            }
-
-            lastHitPlayer = 2;
-            audioManager.PlayPelicanKick();
         }
 
         audioManager.PlayBall();
