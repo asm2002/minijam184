@@ -31,6 +31,7 @@ public class ObstacleManager : MonoBehaviour
         spawnTimer += Time.deltaTime;
     }
 
+    [ContextMenu("Spawn")]
     private void SpawnObstacle()
     {
 

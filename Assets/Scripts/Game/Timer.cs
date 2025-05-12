@@ -55,7 +55,6 @@ public class Timer : MonoBehaviour
             DisplayTime(timeRemaining, timeRemainingDisplay);
         }
         else {
-            // End game via gameManager
             GameManager.Instance.EndGame();
         }
     }

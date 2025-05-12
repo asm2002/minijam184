@@ -3814,6 +3814,7 @@ GameObject:
   - component: {fileID: 1261791278}
   - component: {fileID: 1261791281}
   - component: {fileID: 1261791282}
+  - component: {fileID: 1261791283}
   m_Layer: 6
   m_Name: Bird One
   m_TagString: Player
@@ -3976,6 +3977,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
+--- !u!95 &1261791283
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261791277}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1372427603
 GameObject:
   m_ObjectHideFlags: 0
@@ -4216,6 +4238,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9105661160689616586, guid: b60394e04ea49d040809c405eba6367b, type: 3}
+      propertyPath: pelicanKick.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9105661160689616586, guid: b60394e04ea49d040809c405eba6367b, type: 3}
+      propertyPath: pelicanKick.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: dc3f34f4243537847bc134ed4cf1afaa, type: 3}
+    - target: {fileID: 9105661160689616586, guid: b60394e04ea49d040809c405eba6367b, type: 3}
+      propertyPath: pelicanKick.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 0ba8896776fee0e46ac4b106b2a06776, type: 3}
+    - target: {fileID: 9105661160689616586, guid: b60394e04ea49d040809c405eba6367b, type: 3}
+      propertyPath: pelicanKick.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 99cc248a15f3bb3448dcd9e40d3406ec, type: 3}
+    - target: {fileID: 9105661160689616586, guid: b60394e04ea49d040809c405eba6367b, type: 3}
+      propertyPath: seagullKick.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 629836f425e07614891f9e271e35e0c0, type: 3}
+    - target: {fileID: 9105661160689616586, guid: b60394e04ea49d040809c405eba6367b, type: 3}
+      propertyPath: seagullKick.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: aa5fbb952c3052647b6006a9d8f3e372, type: 3}
+    - target: {fileID: 9105661160689616586, guid: b60394e04ea49d040809c405eba6367b, type: 3}
+      propertyPath: seagullKick.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: ab8417bf03bb7594cbfeff520b9dd34c, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4875,10 +4925,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacles:
   - {fileID: 1461113229191343839, guid: 5f3141b2d821d634ebe4176a1d5fb868, type: 3}
+  - {fileID: 1461113229191343839, guid: fcef673ffbb9b60459bd9d94d5d642ea, type: 3}
+  - {fileID: 1461113229191343839, guid: b17a8316830301d4eb8f4b4d2ccd92e9, type: 3}
   spawnPointL: {fileID: 1682180735}
   spawnPointR: {fileID: 1890869766}
   spawnRange: 6
-  spawnTime: 10
+  spawnTime: 5
   timeDecreaseRate: 0.05
 --- !u!4 &1694607846
 Transform:
