@@ -5000,8 +5000,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacles:
   - {fileID: 1461113229191343839, guid: 5f3141b2d821d634ebe4176a1d5fb868, type: 3}
-  - {fileID: 1461113229191343839, guid: 5f3141b2d821d634ebe4176a1d5fb868, type: 3}
-  - {fileID: 1461113229191343839, guid: 5f3141b2d821d634ebe4176a1d5fb868, type: 3}
+  - {fileID: 1461113229191343839, guid: b17a8316830301d4eb8f4b4d2ccd92e9, type: 3}
+  - {fileID: 1461113229191343839, guid: fcef673ffbb9b60459bd9d94d5d642ea, type: 3}
   spawnPointL: {fileID: 1682180735}
   spawnPointR: {fileID: 1890869766}
   spawnRange: 6
