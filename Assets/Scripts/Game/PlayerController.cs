@@ -15,10 +15,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float flapDelay = 0.2f;
     [SerializeField] private float moveSpeed = 10f;
 
-    [SerializeField] private SpriteRenderer spriteRenderer;
-    [SerializeField] private SpriteRenderer wings;
-    [SerializeField] private Animator animator;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -115,8 +111,6 @@ public class PlayerController : MonoBehaviour
         Vector2 vel = rb.velocity;
         vel.x = -moveSpeed;
         rb.velocity = vel;
-        spriteRenderer.flipY = true;
-        wings.flipY = true;
     }
 
     private void GoRight()
@@ -124,16 +118,5 @@ public class PlayerController : MonoBehaviour
         Vector2 vel = rb.velocity;
         vel.x = moveSpeed;
         rb.velocity = vel;
-        spriteRenderer.flipY = false;
-        wings.flipY = false;
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        int x = Random.Range(0, 3);
-        if (x == 0) animator.Play("Butt");
-        else if (x == 1) animator.Play("Head");
-        else animator.Play("Kick");
-    }
-
 }
