@@ -3944,6 +3944,9 @@ MonoBehaviour:
   flapPower: 10
   flapDelay: 0.2
   moveSpeed: 10
+  spriteRenderer: {fileID: 1261791279}
+  wings: {fileID: 326395422}
+  animator: {fileID: 1261791283}
 --- !u!212 &1261791279
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4416,7 +4419,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1481623282
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4500,6 +4503,9 @@ MonoBehaviour:
   flapPower: 10
   flapDelay: 0.2
   moveSpeed: 10
+  spriteRenderer: {fileID: 0}
+  wings: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!50 &1481623285
 Rigidbody2D:
   serializedVersion: 4
@@ -4993,6 +4999,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacles:
+  - {fileID: 1461113229191343839, guid: 5f3141b2d821d634ebe4176a1d5fb868, type: 3}
+  - {fileID: 1461113229191343839, guid: 5f3141b2d821d634ebe4176a1d5fb868, type: 3}
   - {fileID: 1461113229191343839, guid: 5f3141b2d821d634ebe4176a1d5fb868, type: 3}
   spawnPointL: {fileID: 1682180735}
   spawnPointR: {fileID: 1890869766}
