@@ -102,8 +102,8 @@ public class StartMenu : MonoBehaviour
         controlsMenu.SetActive(true);
         controlsPanel.localScale = Vector3.zero;
         controlsPanel.DOScale(Vector3.one, controlsTime);
-        controlsPanel.DOMoveY(2000, 0);
-        controlsPanel.DOMoveY(700, controlsTime).SetEase(Ease.InOutQuad);
+        controlsPanel.DOMoveY(Screen.height * 2, 0);
+        controlsPanel.DOMoveY(Screen.height * 3 / 5, controlsTime).SetEase(Ease.InOutQuad);
         controlsBlurImage.DOColor(blurColor, controlsTime);
         promptColorSequence.Play();
     }
@@ -115,7 +115,7 @@ public class StartMenu : MonoBehaviour
         controlsMenu.SetActive(true);
         controlsPanel.DOScale(Vector3.zero, controlsTime);
         controlsBlurImage.DOColor(blurTransparent, controlsTime);
-        controlsPanel.DOMoveY(2000, controlsTime).SetEase(Ease.InOutQuad);
+        controlsPanel.DOMoveY(Screen.height * 2, controlsTime).SetEase(Ease.InOutQuad);
         StartCoroutine(CloseControlsMenu());
     }
 

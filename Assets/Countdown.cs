@@ -14,14 +14,14 @@ public class Countdown : MonoBehaviour
     void Start()
     {
         countdownText = GetComponent<TMP_Text>();
-        countdownText.rectTransform.DOMoveY(-1000, 0);
+        countdownText.rectTransform.DOMoveY(-Screen.height, 0);
         StartCoroutine(StartCountdown());
     }
 
     private IEnumerator StartCountdown()
     {
         countdownText.fontSize = 50;
-        countdownText.rectTransform.DOMoveY(Screen.currentResolution.height / 2, 1.5f).SetEase(Ease.InOutQuad).SetUpdate(true);
+        countdownText.rectTransform.DOMoveY(Screen.height / 2, 1.5f).SetEase(Ease.InOutQuad).SetUpdate(true);
         countdownText.SetText("Get the ball as high as you can!");
         yield return new WaitForSeconds(3);
 
@@ -47,7 +47,7 @@ public class Countdown : MonoBehaviour
         countdownText.DOColor(countdownTextColor, 3).SetEase(Ease.InOutQuad).SetUpdate(true);
         yield return new WaitForSeconds(1.5f);
 
-        countdownText.rectTransform.DOMoveY(1000, 1.5f).SetEase(Ease.InOutQuad).SetUpdate(true);
+        countdownText.rectTransform.DOMoveY(2 * Screen.height, 1.5f).SetEase(Ease.InOutQuad).SetUpdate(true);
 
     }
 

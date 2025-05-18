@@ -50,11 +50,15 @@ public class PlayerController : MonoBehaviour
         //Left
         if (Input.GetKey(KeyCode.A))
         {
+            spriteRenderer.flipX = true;
+            wings.flipX = true;
             GoLeft();
         }
         //Right
         if (Input.GetKey(KeyCode.D))
         {
+            spriteRenderer.flipX = false;
+            wings.flipX = false;
             GoRight();
         }
 
@@ -70,11 +74,15 @@ public class PlayerController : MonoBehaviour
         //Left
         if (Input.GetKey(KeyCode.LeftArrow))
         {
+            spriteRenderer.flipX = false;
+            wings.flipX = false;
             GoLeft();
         }
         //Right
         if (Input.GetKey(KeyCode.RightArrow))
         {
+            spriteRenderer.flipX = true;
+            wings.flipX = true;
             GoRight();
         }
     }
@@ -115,8 +123,7 @@ public class PlayerController : MonoBehaviour
         Vector2 vel = rb.velocity;
         vel.x = -moveSpeed;
         rb.velocity = vel;
-        spriteRenderer.flipX = true;
-        wings.flipX = true;
+        
     }
 
     private void GoRight()
@@ -124,8 +131,7 @@ public class PlayerController : MonoBehaviour
         Vector2 vel = rb.velocity;
         vel.x = moveSpeed;
         rb.velocity = vel;
-        spriteRenderer.flipX = false;
-        wings.flipX = false;
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

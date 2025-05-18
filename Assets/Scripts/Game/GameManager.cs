@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
             endScreen.SetActive(true);
             fadeImage.DOColor(fadeColor, endTime).SetEase(Ease.Linear).SetUpdate(true);
             music.DOPitch(0, endTime).SetEase(Ease.Linear).SetUpdate(true);
-            endScreenComponents.DOMove(endScreenComponents.position + new Vector3(0, 1000, 0), 0).SetEase(Ease.InOutQuad).SetUpdate(true);
+            endScreenComponents.DOMove(endScreenComponents.position + new Vector3(0, Screen.height * 2, 0), 0).SetEase(Ease.InOutQuad).SetUpdate(true);
             endScreenComponents.DOMove(endScreenComponents.position, endTime).SetUpdate(true);
         }
     }

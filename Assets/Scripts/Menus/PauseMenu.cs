@@ -30,7 +30,7 @@ public class PauseMenu : MonoBehaviour
         backgroundImage.color = backgroundTransparent;
 
         pausePosition = pauseComponents.position;
-        pauseComponents.position += new Vector3(0, 1000);
+        pauseComponents.position += new Vector3(0, Screen.height);
     }
 
     void Update()
@@ -60,7 +60,7 @@ public class PauseMenu : MonoBehaviour
         canPause = false;
         DOTween.To(() => Time.timeScale, x => Time.timeScale = x, 1, pauseTime).SetUpdate(true);
         backgroundImage.DOColor(backgroundTransparent, pauseTime).SetUpdate(true);
-        pauseComponents.DOMove(pausePosition - new Vector3(0, 1000), pauseTime).SetUpdate(true);
+        pauseComponents.DOMove(pausePosition - new Vector3(0, Screen.height), pauseTime).SetUpdate(true);
         music.DOFade(0.7f, pauseTime).SetUpdate(true);
         DOTween.To(() => lowPassFilter.cutoffFrequency, x => lowPassFilter.cutoffFrequency = x, 22000, pauseTime).SetUpdate(true);
         StartCoroutine(closePauseMenu());
